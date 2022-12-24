@@ -56,12 +56,20 @@ Console.WriteLine();
 
 Console.WriteLine("Consultar Detalhes sobre o seu Monstrinho");
 var pokemon = await pokeService.ConsultarPokemon(monstroSelecionado);
-
-Console.WriteLine($"{pokemon.name} - Altura:{pokemon.height} - peso:{pokemon.weight}");
+Console.WriteLine("-------------------------------------------");
+Console.WriteLine($"Nome Pokemon: {pokemon.name} - Altura: {pokemon.height} - Peso: {pokemon.weight}");
 Console.WriteLine("Tipo:");
 foreach (var item in pokemon.types)
 {
-    Console.WriteLine($"*{item.type.name}");
+    Console.WriteLine($"** {item.type.name}");
+}
+
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine($"Habilidades:");
+foreach (var habilidade in pokemon.abilities)
+{
+    Console.WriteLine($"** {habilidade.ability.name}");
 }
 
 Console.WriteLine();

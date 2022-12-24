@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace NewTamagotchiLib.Model
 {
-    public class PokemonPokeAPIDetail : PokemonPokeAPI
+    public class PokemonPokeAPIDetail
     {
-        public IEnumerable<Ability> abilities;
+        public List<Abilidades> abilities { get; set; }
         public int height { get; set; }
         public string name { get; set; }
-        public IEnumerable<Types> types { get; set; }
+        public List<Types> types { get; set; }
         public int weight { get; set; }
 
     }
