@@ -18,18 +18,27 @@ namespace NewTamagotchiLib.Service
         public async Task<CatalogoPokeAPI> ConsultarCatalogo()
         {
             var resultado = await httpClient.GetAsync("https://pokeapi.co/api/v2/pokemon/");
-            if (resultado.StatusCode != System.Net.HttpStatusCode.OK)
-                throw new Exception($"{resultado.StatusCode}--{resultado.RequestMessage}");
-
+            ChecaStatusRetorno(ref resultado);
             var retorno = JsonSerializer.Deserialize<CatalogoPokeAPI>(resultado.Content.ReadAsStringAsync().Result);
 
             return retorno;
 
     }
 
-        public Task<PokemonPokeAPIDetail> ConsultarPokemon(PokemonPokeAPI pokemon)
+        public async Task<PokemonPokeAPIDetail> ConsultarPokemon(PokemonPokeAPI pokemon)
         {
-            throw new NotImplementedException();
+            var resultado = await httpClient.GetAsync(pokemon.url);
+            ChecaStatusRetorno(ref resultado);
+            var retorno = JsonSerializer.Deserialize<PokemonPokeAPIDetail>(resultado.Content.ReadAsStringAsync().Result);
+
+            return retorno;
+                
+        }
+
+        private void ChecaStatusRetorno(ref HttpResponseMessage resultado)
+        {
+            if (resultado.StatusCode != System.Net.HttpStatusCode.OK)
+                throw new Exception($"{resultado.StatusCode}--{resultado.RequestMessage}");
         }
     }
 }

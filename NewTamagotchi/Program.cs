@@ -51,3 +51,19 @@ while (!pokemonFoiSelecionado)
 } 
 
 Console.WriteLine($"Monstro Selecionado foi o {monstroSelecionado.name}");
+
+Console.WriteLine();
+
+Console.WriteLine("Consultar Detalhes sobre o seu Monstrinho");
+var pokemon = await pokeService.ConsultarPokemon(monstroSelecionado);
+
+Console.WriteLine($"{pokemon.name} - Altura:{pokemon.height} - peso:{pokemon.weight}");
+Console.WriteLine("Tipo:");
+foreach (var item in pokemon.types)
+{
+    Console.WriteLine($"*{item.type.name}");
+}
+
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine("Excelente Escolha!!!");

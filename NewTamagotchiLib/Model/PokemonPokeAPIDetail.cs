@@ -9,5 +9,10 @@ namespace NewTamagotchiLib.Model
     public class PokemonPokeAPIDetail : PokemonPokeAPI
     {
         public IEnumerable<Ability> abilities;
+        public int height { get; set; }
+        public string name { get; set; }
+        public IEnumerable<Types> types { get; set; }
+        public int weight { get; set; }
+
     }
 }
